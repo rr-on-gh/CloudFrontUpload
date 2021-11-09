@@ -17,6 +17,3 @@ log/
 target/
 
 *.pem
-my_cloudfront.properties
-100mbfile
-10mbfile
