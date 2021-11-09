@@ -5,7 +5,7 @@ However, if for some specific reasons you do choose to use CloudFront to acceler
 
 ## Step 1: Create an Origin Request Policy
 In the AWS console, navigate to CloudFront -> Policies -> Origin request -> Create origin request policy
-Create the origin request policy with [these settings](https://github.com/rr-on-gh/CloudFrontUpload/blob/master/Origin_Request_Policy.png) that forwards all query strings to the origin which in this case will be S3.
+Create the origin request policy with [these settings](https://raw.githubusercontent.com/rr-on-gh/CloudFrontUpload/master/Origin_Request_Policy.png) that forwards all query strings to the origin which in this case will be S3.
 
 ## Step 2: Create the CloudFront distribution
 Create a new CloudFront distribution with [these settings](https://raw.githubusercontent.com/rr-on-gh/CloudFrontUpload/master/CloudFront_Creation.png). Make sure to select the Origin Request policy you created in the previous step. 
