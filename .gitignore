@@ -1,0 +1,22 @@
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+*.pem
+my_cloudfront.properties
+100mbfile
+10mbfile
