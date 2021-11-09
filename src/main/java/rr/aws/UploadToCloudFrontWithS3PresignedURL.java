@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.Duration;
 
-public class S3PresignedURL {
+public class UploadToCloudFrontWithS3PresignedURL {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         String keyName = "test_file.txt";
@@ -53,7 +53,7 @@ public class S3PresignedURL {
 
     private static void putToCloudFrontUsingS3PresignedURL(S3Presigner presigner, String bucketName, String keyName, String cloudFrontDistribution)
             throws URISyntaxException, IOException {
-        URL url = S3PresignedURL.createS3PresignedUrl(presigner, bucketName, keyName);
+        URL url = UploadToCloudFrontWithS3PresignedURL.createS3PresignedUrl(presigner, bucketName, keyName);
 
         //Change to cloudfront URL
         URL cloudFrontUrl = new URIBuilder(URI.create(url.toString()))
