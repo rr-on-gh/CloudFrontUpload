@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.Duration;
 
-public class UploadToCloudFrontWithS3PresignedURL {
+public class UploadThroughCloudFrontWithS3PresignedURL {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         String keyName = "test_file.txt";
@@ -29,11 +29,11 @@ public class UploadToCloudFrontWithS3PresignedURL {
                 .credentialsProvider(ProfileCredentialsProvider.builder().profileName("first").build())
                 .endpointOverride(new URI("https://s3." + region + ".amazonaws.com"))
                 .build();
-        putToCloudFrontUsingS3PresignedURL(presigner, bucketName, keyName, cloudFrontDistribution);
+        putThroughCloudFrontUsingS3PresignedURL(presigner, bucketName, keyName, cloudFrontDistribution);
     }
 
 
-    private static void putToCloudFrontUsingS3PresignedURL(S3Presigner presigner, String bucketName, String keyName, String cloudFrontDistribution)
+    private static void putThroughCloudFrontUsingS3PresignedURL(S3Presigner presigner, String bucketName, String keyName, String cloudFrontDistribution)
             throws URISyntaxException, IOException {
         // Generate the S3 Presigned URL
         URL url = createS3PresignedUrl(presigner, bucketName, keyName);

@@ -21,4 +21,4 @@ the CloudFront URL would be:
 ```
 https://dxxxxxxxx.cloudfront.net/test_file.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20211109T105053Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=XXXXX%2F20211109%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=yyyy
 ```
-Refer [`UploadToCloudFrontWithS3PresignedURL`](https://github.com/rr-on-gh/CloudFrontUpload/blob/master/src/main/java/rr/aws/UploadToCloudFrontWithS3PresignedURL.java#L20) for example of generation of the presigned URL and the nits involved while replacing the hostname with the CloudFront distribution domain name. 
+Refer [`UploadThroughCloudFrontWithS3PresignedURL`](https://github.com/rr-on-gh/CloudFrontUpload/blob/master/src/main/java/rr/aws/UploadThroughCloudFrontWithS3PresignedURL.java#L20) for example of generation of the presigned URL and the nits involved while replacing the hostname with the CloudFront distribution domain name. 
