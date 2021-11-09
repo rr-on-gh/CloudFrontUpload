@@ -35,10 +35,10 @@ public class UploadToCloudFrontWithS3PresignedURL {
 
     private static void putToCloudFrontUsingS3PresignedURL(S3Presigner presigner, String bucketName, String keyName, String cloudFrontDistribution)
             throws URISyntaxException, IOException {
-        // generate the S3 Presigned URL
+        // Generate the S3 Presigned URL
         URL url = createS3PresignedUrl(presigner, bucketName, keyName);
 
-        //Change to cloudfront URL
+        // Change to cloudfront URL
         URL cloudFrontUrl = new URIBuilder(URI.create(url.toString()))
                 .setHost(cloudFrontDistribution)
                 .build().toURL();
