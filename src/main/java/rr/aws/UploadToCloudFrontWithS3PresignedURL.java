@@ -38,7 +38,7 @@ public class UploadToCloudFrontWithS3PresignedURL {
         // Generate the S3 Presigned URL
         URL url = createS3PresignedUrl(presigner, bucketName, keyName);
 
-        // Change to cloudfront URL
+        // Change to CloudFront URL
         URL cloudFrontUrl = new URIBuilder(URI.create(url.toString()))
                 .setHost(cloudFrontDistribution)
                 .build().toURL();
