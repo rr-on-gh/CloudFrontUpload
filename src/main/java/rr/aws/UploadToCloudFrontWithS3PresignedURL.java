@@ -32,6 +32,24 @@ public class UploadToCloudFrontWithS3PresignedURL {
         putToCloudFrontUsingS3PresignedURL(presigner, bucketName, keyName, cloudFrontDistribution);
     }
 
+
+    private static void putToCloudFrontUsingS3PresignedURL(S3Presigner presigner, String bucketName, String keyName, String cloudFrontDistribution)
+            throws URISyntaxException, IOException {
+        // generate the S3 Presigned URL
+        URL url = createS3PresignedUrl(presigner, bucketName, keyName);
+
+        //Change to cloudfront URL
+        URL cloudFrontUrl = new URIBuilder(URI.create(url.toString()))
+                .setHost(cloudFrontDistribution)
+                .build().toURL();
+        System.out.println("CF URL:\n" + cloudFrontUrl);
+
+        // Upload to S3 through CloudFront
+        int responseCode = uploadObject(cloudFrontUrl);
+        System.out.println("HTTP response code is " + responseCode);
+    }
+
+
     private static URL createS3PresignedUrl(S3Presigner presigner, String bucketName, String keyName) {
 
         PutObjectRequest objectRequest = PutObjectRequest.builder()
@@ -49,20 +67,6 @@ public class UploadToCloudFrontWithS3PresignedURL {
         System.out.println("S3 Presigned URL: \n" + myURL);
 
         return presignedRequest.url();
-    }
-
-    private static void putToCloudFrontUsingS3PresignedURL(S3Presigner presigner, String bucketName, String keyName, String cloudFrontDistribution)
-            throws URISyntaxException, IOException {
-        URL url = UploadToCloudFrontWithS3PresignedURL.createS3PresignedUrl(presigner, bucketName, keyName);
-
-        //Change to cloudfront URL
-        URL cloudFrontUrl = new URIBuilder(URI.create(url.toString()))
-                .setHost(cloudFrontDistribution)
-                .build().toURL();
-
-        System.out.println("CF URL:\n" + cloudFrontUrl);
-        int responseCode = uploadObject(cloudFrontUrl);
-        System.out.println("HTTP response code is " + responseCode);
     }
 
     private static int uploadObject(URL cloudFrontUrl) throws IOException {
