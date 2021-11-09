@@ -19,12 +19,12 @@ public class UploadToCloudFrontWithS3PresignedURL {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         String keyName = "test_file.txt";
-        String bucketName = "";
+        String bucketName = "adb-asset-upload-1";
         String region = "us-east-1";
-        String cloudFrontDistribution = "";
+        String cloudFrontDistribution = "d24zzgudpkqrcf.cloudfront.net";
 
         // S3Presigner may create the URL with hostname without specifying the bucket region.
-        // For the S3 presigned URL to work with CloudFront the region must explicitly be set
+        // For the S3 presigned URL to work with CloudFront the S3 bucket region must be explicitly set
         S3Presigner presigner = S3Presigner.builder()
                 .credentialsProvider(ProfileCredentialsProvider.builder().profileName("first").build())
                 .endpointOverride(new URI("https://s3." + region + ".amazonaws.com"))
