@@ -8,7 +8,7 @@ In the AWS console, navigate to CloudFront -> Policies -> Origin request -> Crea
 Create the origin request policy with [these settings](https://github.com/rr-on-gh/CloudFrontUpload/blob/master/Origin_Request_Policy.png) that forwards all query strings to the origin which in this case will be S3.
 
 ## Step 2: Create the CloudFront distribution
-Create a new CloudFront distribution with [these settings selected](https://raw.githubusercontent.com/rr-on-gh/CloudFrontUpload/master/CloudFront_Creation.png). Make sure to select the Origin Request policy you created in the previous step. 
+Create a new CloudFront distribution with [these settings](https://raw.githubusercontent.com/rr-on-gh/CloudFrontUpload/master/CloudFront_Creation.png). Make sure to select the Origin Request policy you created in the previous step. 
 
 ## Step 3: Generate the presigned URL for upload
 Once the CloudFront distribution is deployed you can now use S3 presigned URLs to upload objects to S3. You can generate the S3 presigned URLs the way you used to before. Once generated, you just need to replace the host part of the url with you CloudFront distribution's domain.
